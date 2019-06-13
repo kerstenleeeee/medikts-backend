@@ -80,8 +80,11 @@ WSGI_APPLICATION = 'medikts_backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
-db_from_env = dj_database_url.config(conn_max_age=600)
-DATABASES['default'].update(db_from_env)
+DATABASES = {
+    'default': dj_database_url.config(
+        default='postgres://otylhddgndtwxk:28993a8fa3e7c08b3abebcbf5b61615baca2fd5e1fc6772ce6cfcf1dfa58d998@ec2-107-22-238-217.compute-1.amazonaws.com:5432/de5c2sub03sko1'
+    )
+}
 
 
 # Password validation
