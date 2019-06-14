@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'whitenoise.runserver_nostatic'
+    'whitenoise.runserver_nostatic',
+    'backend_api.apps.BackendApiConfig',
 ]
 
 MIDDLEWARE = [
@@ -83,7 +84,6 @@ DATABASES = {
         default='postgres://otylhddgndtwxk:28993a8fa3e7c08b3abebcbf5b61615baca2fd5e1fc6772ce6cfcf1dfa58d998@ec2-107-22-238-217.compute-1.amazonaws.com:5432/de5c2sub03sko1'
     )
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
