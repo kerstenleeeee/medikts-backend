@@ -70,7 +70,7 @@ def health_center_staff_list(request):
         return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET', 'POST'])
-def city_office_staff_list(request):
+def inventory_list(request):
     if request.method == 'GET':
         inventory = models.inventory.objects.all()
         serializer = serializers.inventory_serializer(inventory, many = True)
@@ -83,7 +83,7 @@ def city_office_staff_list(request):
         return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET', 'POST'])
-def city_office_staff_list(request):
+def orders_list(request):
     if request.method == 'GET':
         orders = models.orders.objects.all()
         serializer = serializers.orders_serializer(orders, many = True)

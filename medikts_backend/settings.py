@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'whitenoise.runserver_nostatic',
     'backend_api.apps.BackendApiConfig',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
