@@ -42,9 +42,12 @@ INSTALLED_APPS = [
     'whitenoise.runserver_nostatic',
     'backend_api.apps.BackendApiConfig',
     'rest_framework',
+    'corsheaders'
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -83,6 +86,11 @@ DATABASES = {
         default='postgres://otylhddgndtwxk:28993a8fa3e7c08b3abebcbf5b61615baca2fd5e1fc6772ce6cfcf1dfa58d998@ec2-107-22-238-217.compute-1.amazonaws.com:5432/de5c2sub03sko1'
     )
 }
+
+CORS_ORIGIN_WHITELIST = [
+    "http://localhost:3000",
+    "https://medikts.herokuapp.com",
+]
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
