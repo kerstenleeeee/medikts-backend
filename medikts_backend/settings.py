@@ -24,11 +24,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '_q5_$216+t+dl89r1a!x1(h4j-m(%*y!-h=-4*!9%$+k7mol20'
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+CORS_ORIGIN_ALLOW_ALL = True
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1', 'medikts.herokuapp.com']
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -87,10 +88,10 @@ DATABASES = {
     )
 }
 
-CORS_ORIGIN_WHITELIST = [
-    "http://localhost:3000",
-    "https://medikts.herokuapp.com",
-]
+# CORS_ORIGIN_WHITELIST = [
+#     "http://localhost:3000",
+#     "https://medikts.herokuapp.com",
+# ]
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
