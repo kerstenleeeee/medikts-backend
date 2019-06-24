@@ -24,7 +24,7 @@ class health_center_staff_serializer(serializers.ModelSerializer):
 class inventory_serializer(serializers.ModelSerializer):
 	class Meta:
 		model = models.inventory
-		fields = ('product_code', 'health_center_id', 'product_name', 'current_quantity', 'starting_quantity')
+		fields = ('inventory_id', 'product_code', 'health_center_id', 'product_name', 'current_quantity', 'starting_quantity')
 
 class orders_serializer(serializers.ModelSerializer):
 	class Meta:
