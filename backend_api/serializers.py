@@ -1,5 +1,7 @@
 from rest_framework import serializers
 from . import models
+from django.contrib.auth.models import User
+
 
 class city_office_serializer(serializers.ModelSerializer):
 	class Meta:
@@ -7,9 +9,15 @@ class city_office_serializer(serializers.ModelSerializer):
 		fields = ('city_office_id', 'city_office_name')
 
 class city_office_staff_serializer(serializers.ModelSerializer):
+	user = serializers.SerializerMethodField()
+
+	def get_user(self, obj):
+		instance = User.objects.get(pk=obj.user.id)
+		return instance.username
+
 	class Meta:
 		model = models.city_office_staff
-		fields = ('city_office_staff_id', 'city_office_id', 'city_office_staff_name')
+		fields = ('city_office_staff_id', 'city_office_id', 'city_office_staff_name', 'user')
 
 class health_center_serializer(serializers.ModelSerializer):
 	class Meta:
@@ -19,7 +27,7 @@ class health_center_serializer(serializers.ModelSerializer):
 class health_center_staff_serializer(serializers.ModelSerializer):
 	class Meta:
 		model = models.health_center_staff
-		fields = ('health_center_staff_id', 'health_center_id', 'health_center_staff_name')
+		fields = ('health_center_staff_id', 'health_center_id', 'health_center_staff_name', 'user')
 
 class inventory_serializer(serializers.ModelSerializer):
 	class Meta:
