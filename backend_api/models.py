@@ -47,11 +47,10 @@ class inventory(models.Model):
 
 class orders(models.Model):
 	ORDER_STATUS_CHOICES = (
-		('dispensed', 'dispensed'),
-		('expired', 'expired'),
-		('damaged', 'damaged'),
-		('adjusted', 'adjusted'),
-		('replenished', 'replenished'),
+		('received', 'Received'),
+		('ordered', 'Ordered'),
+		('approved', 'Approved'),
+		('delivered', 'Delivered'),
 	)
 	order_id = models.AutoField(primary_key = True)
 	health_center_id = models.ForeignKey(health_center, related_name = 'order_health_center_id', on_delete = models.PROTECT)
