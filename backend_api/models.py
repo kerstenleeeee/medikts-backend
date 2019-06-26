@@ -36,7 +36,8 @@ class health_center_staff(models.Model):
 		return '%s %s (%s)' % (self.health_center_staff_id, self.health_center_staff_name, self.health_center_id)
 
 class inventory(models.Model):
-	product_code = models.IntegerField(primary_key = True)
+	inventory_id = models.AutoField(primary_key = True, default=0)
+	product_code = models.IntegerField()
 	health_center_id = models.ForeignKey(health_center, related_name = 'inventory_health_center_id', on_delete = models.PROTECT)
 	product_name = models.CharField(null = False, blank = False, max_length = 255)
 	current_quantity = models.IntegerField(validators=[MinValueValidator(0)])
@@ -47,10 +48,10 @@ class inventory(models.Model):
 
 class orders(models.Model):
 	ORDER_STATUS_CHOICES = (
-		('received', 'Received'),
-		('ordered', 'Ordered'),
-		('approved', 'Approved'),
-		('delivered', 'Delivered'),
+		('Ordered', 'Ordered'),
+		('Received', 'Received'),
+		('Confirmed', 'Confirmed'),
+		('Dispatched', 'Dispatched'),
 	)
 	order_id = models.AutoField(primary_key = True)
 	health_center_id = models.ForeignKey(health_center, related_name = 'order_health_center_id', on_delete = models.PROTECT)
