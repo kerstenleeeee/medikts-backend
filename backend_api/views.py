@@ -11,7 +11,8 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 from django.contrib.auth import authenticate
-
+import json
+from django.forms.models import model_to_dict
 
 ###############################
 from . import models
@@ -263,7 +264,7 @@ def login(request):
     user = authenticate(username=request.data['username'], password=request.data['password'])
     data = {}
     if user is not None:
-        data['details'] = user.username
+        data = {"first_name": user.first_name, "last_name": user.last_name, "username":user.username}
     else:
         data['details'] = 'failed authentication'     
     return JsonResponse(data, safe=False)
