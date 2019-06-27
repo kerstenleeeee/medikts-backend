@@ -13,6 +13,7 @@ from rest_framework import status
 from django.contrib.auth import authenticate
 import json
 from django.forms.models import model_to_dict
+from django.contrib.auth.models import User
 
 ###############################
 from . import models
@@ -131,7 +132,8 @@ def city_office_object(request, pk):
 @api_view(['GET', 'POST', 'PUT', 'DELETE'])
 def city_office_staff_object(request, pk):
     try:
-        city_office_staff = models.city_office_staff.objects.get(city_office_staff_id = pk)
+        user = User.objects.get(username=pk)
+        city_office_staff = models.city_office_staff.objects.get(user = user.id)
     except models.city_office_staff.DoesNotExist:
             return Response(status = status.HTTP_404_NOT_FOUND)
 
@@ -183,7 +185,8 @@ def health_center_object(request, pk):
 @api_view(['GET', 'POST', 'PUT', 'DELETE'])
 def health_center_staff_object(request, pk):
     try:
-        health_center_staff = models.health_center_staff.objects.get(health_center_staff_id = pk)
+        user = User.objects.get(username=pk)
+        health_center_staff = models.health_center_staff.objects.get(user = user.id)
     except models.health_center_staff.DoesNotExist:
             return Response(status = status.HTTP_404_NOT_FOUND)
 

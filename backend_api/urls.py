@@ -10,9 +10,9 @@ urlpatterns = [
   path('inventory/all', views.inventory_list),
   path('orders/all', views.orders_list),
   path('city_office/offices/detail/<int:pk>/', views.city_office_object),
-  path('city_office/staff/detail/<int:pk>/', views.city_office_staff_object),
+  path('city_office/staff/detail/<str:pk>/', views.city_office_staff_object),
   path('health_center/centers/detail/<int:pk>/', views.health_center_object),
-  path('health_center/staff/detail/<int:pk>/', views.health_center_staff_object),
+  path('health_center/staff/detail/<str:pk>/', views.health_center_staff_object),
   path('inventory/detail/<int:pk>/', views.inventory_object),
   path('orders/detail/<int:pk>/', views.orders_object),
   path('login/', views.login)
