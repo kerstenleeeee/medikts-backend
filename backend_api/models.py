@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -14,6 +15,7 @@ class city_office_staff(models.Model):
 	city_office_staff_id = models.AutoField(primary_key = True)
 	city_office_id  = models.ForeignKey(city_office, related_name = 'staff_city_office_id', on_delete = models.PROTECT)
 	city_office_staff_name = models.CharField(null = False, blank = False, max_length = 255)
+	user = models.ForeignKey(User, on_delete=models.CASCADE)
 
 	def __str__(self):
 		return '%s %s (%s)' % (self.city_office_staff_id, self.city_office_staff_name, self.city_office_id)
@@ -31,6 +33,7 @@ class health_center_staff(models.Model):
 	health_center_staff_id = models.AutoField(primary_key = True)
 	health_center_id = models.ForeignKey(health_center, related_name = 'staff_health_center_id', on_delete = models.PROTECT)
 	health_center_staff_name = models.CharField(null = False, blank = False, max_length = 255)
+	user = models.ForeignKey(User, on_delete=models.CASCADE)
 
 	def __str__(self):
 		return '%s %s (%s)' % (self.health_center_staff_id, self.health_center_staff_name, self.health_center_id)
