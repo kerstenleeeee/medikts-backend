@@ -212,7 +212,7 @@ def health_center_staff_object(request, pk):
 @api_view(['GET', 'POST', 'PUT', 'DELETE'])
 def inventory_object(request, pk):
     try:
-        inventory = models.inventory.objects.get(product_code = pk)
+        inventory = models.inventory.objects.get(inventory_id = pk)
     except models.inventory.DoesNotExist:
             return Response(status = status.HTTP_404_NOT_FOUND)
 

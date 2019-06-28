@@ -39,7 +39,7 @@ class health_center_staff(models.Model):
 		return '%s %s (%s)' % (self.health_center_staff_id, self.health_center_staff_name, self.health_center_id)
 
 class inventory(models.Model):
-	inventory_id = models.AutoField(primary_key = True, default=0)
+	inventory_id = models.AutoField(primary_key = True)
 	product_code = models.IntegerField()
 	health_center_id = models.ForeignKey(health_center, related_name = 'inventory_health_center_id', on_delete = models.PROTECT)
 	product_name = models.CharField(null = False, blank = False, max_length = 255)
@@ -47,7 +47,7 @@ class inventory(models.Model):
 	starting_quantity = models.IntegerField(validators=[MinValueValidator(0)])
 
 	def __str__(self):
-		return '%s (%s) in %s (%d/%d)' % (self.product_name, self.product_name, self.health_center_id, self.current_quantity, self.starting_quantity)
+		return '%s (%s) in %s (%d/%d)' % (self.inventory_id, self.product_name, self.health_center_id, self.current_quantity, self.starting_quantity)
 
 class orders(models.Model):
 	ORDER_STATUS_CHOICES = (
